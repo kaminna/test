@@ -1,7 +1,9 @@
 #include<stdio.h>
+#include<stdlib.h>
 int main(void)
 {
 	int a, b,c,max,a1,b1,c1;
+	printf("请输入三个数");
 	scanf("%d%d%d", &a, &b,&c);
 	a1 = a;
 	b1 = b;

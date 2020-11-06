@@ -2,14 +2,15 @@
 #include<stdlib.h>
 int main(void)
 {
-	double i=100, j,sum=0;
-	for (int n = 1; n <= 10; n++)
+	double i=100,sum=0;
+	int n;
+	for ( n = 1; n <= 10; n++)
 	{
 		sum += i;
-		i = i / 2;
+		i /= 2;
+		printf("第%d次落地时共经过%f米\n",n,sum);
+		printf("第%d次反弹%f米\n",n,i);
 	}
-	printf("第十次落地时共经过%f米\n", sum);
-	printf("第十次反弹%f米\n", i);
 	system("pause");
 	return 0;
 }

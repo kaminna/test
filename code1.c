@@ -6,3 +6,4 @@ int main(void)
   system("pause");
   return 0;
 }
+//https://fast-fish.club/link/79TmYvcme1yc4N4j?sub=1&extend=1

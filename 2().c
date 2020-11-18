@@ -13,7 +13,8 @@ void pyramid(char ch, int n)
 }
 int main(void)
 {
-	int ch, n;
+	int n;
+	char ch;
 	scanf("%c%d", &ch, &n);
 	pyramid(ch, n);
 	return 0;

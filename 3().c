@@ -1,19 +1,24 @@
 #include<stdio.h>
-#include<stdlib.h>
-int main(void)
+void perfect(int n)
 {
-	int n,i,sum = 1;
-	scanf("%d", &n);
+	int i, sum = 1;
 	for (i = 2; i < n; i++)
 	{
 		if (n%i == 0)
-			sum += i;
+		sum += i;
 	}
 	if (sum == n)
-		printf("%d是完数", n);
+		printf("%d是完数\n", n);
 	else
-		printf("%d不是完数", n);
-	printf("\n");
-	system("pause");
+		printf("%d不是完数\n", n);
+}
+int main(void)
+{
+	int n;
+	scanf("%d", &n);
+	if (n > 1)
+		perfect(n);
+	else
+		printf("%d不是完数\n", n);
 	return 0;
 }

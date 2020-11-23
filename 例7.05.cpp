@@ -25,4 +25,5 @@ int main(void)
 		}
 		if (i % 5 == 0)cout << endl;
 	}
+	return 0;
 }

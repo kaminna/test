@@ -1,16 +1,18 @@
 #include<stdio.h>
 int main(void)
 {
-	char str_one[5],*str,str_two[5];
-	int i,j;
+	char str_one[100],*str,str_two[100];
+	int i,j=0;
 	printf("请输入一个字符串:");
 	scanf("%s",&str_one);
 	printf("从第几个字符开始复制:");
 	scanf("%d",&i);
 	str=&str_one[i-1];
-	for(j=0;j<5;j++)
+	while(*str!='\0')
+	{
 		str_two[j]=*(str+j);
-	str_two[5-(i-1)]='\0';
+		j++;
+	}
 	printf("%s",str_two);
 	return 0;
 }

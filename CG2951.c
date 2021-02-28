@@ -1,7 +1,8 @@
 #include <stdio.h>
 int main(int argc, char **argv)
 {
-	int a, b, c, d, e, f, g, h, i, count = 0;
+	int a, b, c, d, e, f, g, h, i;// count = 0;
+	int x, y, z;
 	for (a = 1; a <= 9; a++)
 	{
 		for (b = 1; b <= 9; b++)
@@ -36,10 +37,13 @@ int main(int argc, char **argv)
 									{
 										if (i == a || i == b || i == c || i == d || i == e || i == f || i == g || i == h)
 											continue;
-										if ((e * 10 + f) * (g * 100 + h * 10 + i) == (e * 100 + h * 10 + f) * (g * 10 + i))
+										x = a * 100 + b * 10 + c;
+										y = d * 100 + e * 10 + f;
+										z = g * 100 + h * 10 + i;
+										if (x * 2 == y && x * 3 == z)
 										{
-											printf("%d%d * %d%d%d = %d%d%d * %d%d\n", e, f, g, h, i, e, h, f, g, i);
-											count++;
+											printf("%d %d %d\n", x, y, z);
+//											count++;
 										}
 									}
 								}
@@ -50,6 +54,6 @@ int main(int argc, char **argv)
 			}
 		}
 	}
-	printf("%d", count);
+//	printf("%d", count);
 	return 0;
 }

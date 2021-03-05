@@ -19,4 +19,3 @@ int main(int argc, char** argv)
 	}
 	return 0;
 }
-//7x+21k=n;

@@ -3,6 +3,7 @@ typedef struct {
 	int* mins;
 	int size;
 } MinStack;
+//栈初始化
 MinStack* minStackCreate() {
 	MinStack* s = malloc(sizeof(MinStack));
 	s->data = NULL;
@@ -10,6 +11,7 @@ MinStack* minStackCreate() {
 	s->size = 0;
 	return s;
 }
+//入栈
 void minStackPush(MinStack* obj, int x) {
 	obj->data = realloc(obj->data, sizeof(int)*(obj->size + 1));
 	obj->mins = realloc(obj->mins, sizeof(int)*(obj->size + 1));
@@ -24,15 +26,19 @@ void minStackPush(MinStack* obj, int x) {
 	}
 	obj->size++;
 }
+//出栈
 void minStackPop(MinStack* obj) {
 	obj->size--;
 }
+//取栈顶元素
 int minStackTop(MinStack* obj) {
 	return obj->data[obj->size - 1];
 }
+//最小栈
 int minStackGetMin(MinStack* obj) {
 	return obj->mins[obj->size - 1];
 }
+//释放内存
 void minStackFree(MinStack* obj) {
 	free(obj->data);
 	free(obj->mins);

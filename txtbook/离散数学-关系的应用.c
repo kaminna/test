@@ -3,20 +3,20 @@
 #include <string.h>
 #include <time.h>
 
-char** CreateSet(int Row); //³õÊ¼»¯²¢¶ÁÈë¼¯ºÏ
-int** InitMatrix(int Row, int Column); //³õÊ¼»¯¹ØÏµ¾ØÕó
-void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int Column); //°ÑÒ»¸ö¹ØÏµ¶ÔÓ¦µ½¹ØÏµ¾ØÕó
-int** Composite(int** R, int** G, int a, int b, int c); //¹ØÏµµÄ¸´ºÏÔËËã(¾ØÕóÏà³Ë)
-int isReflexive(int** R, int Row); //ÊÇ·ñ×Ô·´
-int isAntiReflexive(int** R, int Row); //ÊÇ·ñ·´×Ô·´
-int isSymmetric(int** R, int Row); //ÊÇ·ñ¶Ô³Æ
-int isAntiSymmetric(int** R, int Row); //ÊÇ·ñ·´¶Ô³Æ
-int isTransitive(int** R, int Row); //ÊÇ·ñ´«µİ
-int** TransitiveClosures(int** R, int Row); //´«µİ±Õ°ü
-void Quotientset(int** R, int Row); //ÉÌ¼¯
-void PrintMatrix(int** R, char** A, char** B, int Row, int Column); //´òÓ¡¹ØÏµ¾ØÕó
-void FreeSet(char** Set, int Row); //ÊÍ·Å¼¯ºÏ
-void FreeMatrix(int **R, int Row); //ÊÍ·Å¹ØÏµ¾ØÕó
+char** CreateSet(int Row); //åˆå§‹åŒ–å¹¶è¯»å…¥é›†åˆ
+int** InitMatrix(int Row, int Column); //åˆå§‹åŒ–å…³ç³»çŸ©é˜µ
+void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int Column); //æŠŠä¸€ä¸ªå…³ç³»å¯¹åº”åˆ°å…³ç³»çŸ©é˜µ
+int** Composite(int** R, int** G, int a, int b, int c); //å…³ç³»çš„å¤åˆè¿ç®—(çŸ©é˜µç›¸ä¹˜)
+int isReflexive(int** R, int Row); //æ˜¯å¦è‡ªå
+int isAntiReflexive(int** R, int Row); //æ˜¯å¦åè‡ªå
+int isSymmetric(int** R, int Row); //æ˜¯å¦å¯¹ç§°
+int isAntiSymmetric(int** R, int Row); //æ˜¯å¦åå¯¹ç§°
+int isTransitive(int** R, int Row); //æ˜¯å¦ä¼ é€’
+int** TransitiveClosures(int** R, int Row); //ä¼ é€’é—­åŒ…
+void Quotientset(int** R, int Row); //å•†é›†
+void PrintMatrix(int** R, char** A, char** B, int Row, int Column); //æ‰“å°å…³ç³»çŸ©é˜µ
+void FreeSet(char** Set, int Row); //é‡Šæ”¾é›†åˆ
+void FreeMatrix(int **R, int Row); //é‡Šæ”¾å…³ç³»çŸ©é˜µ
 
 int main(int argc, char** argv) {
 	char operation;
@@ -184,7 +184,7 @@ int main(int argc, char** argv) {
 		printf("4.Computing the transitive closure of a relation\n");
 		printf("5.Judge the relation of equivalence relation\n");
 		printf("Please choose the function what you want(press 0 to exit):");
-		getchar();//°Ñ»º³åÇøµÄ»Ø³µ¶Á×ß
+		getchar();//æŠŠç¼“å†²åŒºçš„å›è½¦è¯»èµ°
 		scanf("%c", &operation);
 	}
 	return 0;
@@ -273,10 +273,7 @@ int isSymmetric(int** R, int Row) {
 int isAntiSymmetric(int** R, int Row) {
 	int flag = 1;
 	for (int i = 0; i < Row; i++) {
-		for (int j = 0; j < Row; j++) {
-			if (i == j) {
-				continue;
-			}
+		for (int j = 0; j < i; j++) {
 			if (R[i][j] == 1 && R[j][i] == 1) {
 				flag = 0;
 				return flag;

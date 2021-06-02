@@ -6,13 +6,18 @@
 char** CreateSet(int Row); //初始化并读入集合
 int** InitMatrix(int Row, int Column); //初始化关系矩阵
 void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int Column); //把一个关系对应到关系矩阵
-void Composite(int** R, int** G, int a, int b, int c); //关系的复合运算（矩阵相乘）
+int** Composite(int** R, int** G, int a, int b, int c); //关系的复合运算(矩阵相乘)
 int isReflexive(int** R, int Row); //是否自反
+int isAntiReflexive(int** R, int Row); //是否反自反
 int isSymmetric(int** R, int Row); //是否对称
 int isTransitive(int** R, int Row); //是否传递
+void isQuivalent(int** R, int Row); //是否为等价关系
+int** TransitiveClosures(int** R, int Row); //传递闭包
 void PrintMatrix(int** R, char** A, char** B, int Row, int Column); //打印关系矩阵
 void FreeSet(char** Set, int Row); //释放集合
 void FreeMatrix(int **R, int Row); //释放关系矩阵
+
+clock_t start, stop;
 
 int main(int argc, char** argv) {
 	char operation;
@@ -27,7 +32,9 @@ int main(int argc, char** argv) {
 
 	while (operation != '0') {
 		if (operation >= '1' && operation <= '5') {
+
 			printf("\n");
+
 			printf("The number of element in set A:");
 			int a;
 			scanf("%d", &a);
@@ -35,80 +42,107 @@ int main(int argc, char** argv) {
 			printf("Please input set A:");
 			char** A = CreateSet(a);
 
-			printf("The number of element in set B:");
-			int b;
-			scanf("%d", &b);
+			if (operation >= '1'&&operation <= '2') {
 
-			printf("Please input set B:");
-			char** B = CreateSet(b);
+				printf("The number of element in set B:");
+				int b;
+				scanf("%d", &b);
 
-			int **R = InitMatrix(a, b);
+				printf("Please input set B:");
+				char** B = CreateSet(b);
 
-			printf("The number of relation from set A to set B:");
-			int k;
-			scanf("%d", &k);
+				int **R = InitMatrix(a, b);
 
-			printf("Relation from set A to set B:\n");
-			for (int i = 0; i < k; i++) {
-				char x[12], y[12];
-				scanf("%s%s", x, y);
-				AssiganMatrix(R, A, B, x, y, a, b);
-			}
+				printf("The number of relation from set A to set B:");
+				int k;
+				scanf("%d", &k);
 
-			if (operation == '1') {
-				printf("The matrix for R:\n");
-				PrintMatrix(R, A, B, a, b);
-				printf("\n");
-			}
-
-			if (operation == '2') {
-				printf("The number of element in set C:");
-				int c;
-				scanf("%d", &c);
-
-				printf("Please input set C:");
-				char** C = CreateSet(c);
-
-				int **G = InitMatrix(b, c);
-
-				printf("The number of relation from set B to set C:");
-				int p;
-				scanf("%d", &p);
-
-				printf("Relation from set B to set C:\n");
-				for (int i = 0; i < p; i++) {
+				printf("Relation R from set A to set B:\n");
+				for (int i = 0; i < k; i++) {
 					char x[12], y[12];
 					scanf("%s%s", x, y);
-					AssiganMatrix(G, B, C, x, y, b, c);
+					AssiganMatrix(R, A, B, x, y, a, b);
+				}
+
+				if (operation == '1') {
+					printf("The matrix for R:\n");
+					PrintMatrix(R, A, B, a, b);
+					printf("\n");
+				}
+
+				if (operation == '2') {
+					printf("The number of element in set C:");
+					int c;
+					scanf("%d", &c);
+
+					printf("Please input set C:");
+					char** C = CreateSet(c);
+
+					int **G = InitMatrix(b, c);
+
+					printf("The number of relation from set B to set C:");
+					int p;
+					scanf("%d", &p);
+
+					printf("Relation G from set B to set C:\n");
+					for (int i = 0; i < p; i++) {
+						char x[12], y[12];
+						scanf("%s%s", x, y);
+						AssiganMatrix(G, B, C, x, y, b, c);
+					}
+
+					int** M = Composite(R, G, a, b, c);
+					printf("The composite of R to G:\n ");
+					PrintMatrix(M, A, C, a, c);
+
+					printf("\n");
+
+					FreeSet(B, b);
+					FreeSet(C, c);
+					FreeMatrix(G, b);
+					FreeMatrix(M, a);
+				}
+				FreeMatrix(R, a);
+			}
+			if (operation >= '3' && operation <= '5') {
+				int** R = InitMatrix(a, a);
+
+				printf("The number of relation on set A:");
+				int k;
+				scanf("%d", &k);
+
+				printf("Relation  R on set A:\n");
+				for (int i = 0; i < k; i++) {
+					char x[12], y[12];
+					scanf("%s%s", x, y);
+					AssiganMatrix(R, A, A, x, y, a, a);
 				}
 
 				printf("The matrix for R:\n");
-				PrintMatrix(R, A, B, a, b);
-
-				printf("The matrix for G:\n");
-				PrintMatrix(G, B, C, b, c);
+				PrintMatrix(R, A, A, a, a);
 
 				printf("\n");
 
-				FreeSet(C, c);
-				FreeMatrix(G, b);
+				if (operation == '3') {
+
+				}
+
+				if (operation == '4') {
+					printf("The transitive closure of relation R:\n");
+					start = clock();
+					R = TransitiveClosures(R, a);
+					stop = clock();
+					PrintMatrix(R, A, A, a, a);
+					printf("Cost %lf seconses\n", (double)(stop - start) / CLOCKS_PER_SEC);
+					printf("\n");
+				}
+
+				if (operation == '5') {
+
+				}
+				FreeMatrix(R, a);
 			}
-
-			if (operation == '3') {
-
-			}
-
-			if (operation == '4') {
-
-			}
-
-			if (operation == '5') {
-
-			}
-
 			FreeSet(A, a);
-			FreeSet(B, b);
-			FreeMatrix(R, a);
 		}
 		else {
 			printf("\n");
@@ -122,7 +156,7 @@ int main(int argc, char** argv) {
 		printf("4.Computing the transitive closure of a relation\n");
 		printf("5.Judge the relation of equivalence relation\n");
 		printf("Please choose the function what you want(press 0 to exit):");
-		getchar();//把回车读走
+		getchar();//把缓冲区的回车读走
 		scanf("%c", &operation);
 	}
 	return 0;
@@ -158,6 +192,69 @@ void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int C
 	}
 }
 
+int** Composite(int** R, int** G, int a, int b, int c) {
+	int** M = InitMatrix(a, c);
+	for (int i = 0; i < a; i++) {
+		for (int j = 0; j <c; j++) {
+			for (int k = 0; k < b; k++) {
+				M[i][j] += R[i][k] * G[k][j];
+			}
+		}
+	}
+	return M;
+}
+
+int isReflexive(int** R, int Row) {
+	int flag = 1;
+	for (int i = 0; i < Row; i++) {
+		if (R[i][i] == 0) {
+			flag = 0;
+			return flag;
+		}
+	}
+	return flag;
+}
+
+int isAntiReflexive(int** R, int Row) {
+	int flag = 1;
+	for (int i = 0; i < Row; i++) {
+		if (R[i][i]) {
+			flag = 0;
+			return flag;
+		}
+	}
+	return flag;
+}
+
+int isSymmetric(int** R, int Row) {
+	int flag = 1;
+	for (int i = 0; i < Row; i++) {
+		for (int j = 0; j < i; j++) {
+			if (R[i][j] != R[j][i]) {
+				flag = 0;
+				return flag;
+			}
+		}
+	}
+	return flag;
+}
+
+int** TransitiveClosures(int** R, int Row) {
+	for (int i = 0; i < Row; i++)
+	{
+		for (int j = 0; j < Row; j++)
+		{
+			if (R[j][i] == 1)
+			{
+				for (int k = 0; k < Row; k++)
+				{
+					R[j][k] = R[j][k] | R[i][k];
+				}
+			}
+		}
+	}
+	return R;
+}
 
 void PrintMatrix(int** R, char** A, char** B, int Row, int Column) {
 	printf("\\\t");

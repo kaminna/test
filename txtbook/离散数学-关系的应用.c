@@ -226,6 +226,11 @@ void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int C
 			}
 		}
 	}
+
+	printf("Error!\n");
+	printf("Please input a relation again:\n");
+	scanf("%s%s", x, y);
+	AssiganMatrix(R, A, B, x, y, Row, Column);
 }
 
 int** Composite(int** R, int** G, int a, int b, int c) {

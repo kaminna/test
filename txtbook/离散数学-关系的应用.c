@@ -1,22 +1,22 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 
-char** CreateSet(int Row); //³õÊ¼»¯²¢¶ÁÈë¼¯ºÏ
-int** InitMatrix(int Row, int Column); //³õÊ¼»¯¹ØÏµ¾ØÕó
-void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int Column); //°ÑÒ»¸ö¹ØÏµ¶ÔÓ¦µ½¹ØÏµ¾ØÕó
-int** Composite(int** R, int** G, int a, int b, int c); //¹ØÏµµÄ¸´ºÏÔËËã(¾ØÕóÏà³Ë)
-int isReflexive(int** R, int Row); //ÊÇ·ñ×Ô·´
-int isAntiReflexive(int** R, int Row); //ÊÇ·ñ·´×Ô·´
-int isSymmetric(int** R, int Row); //ÊÇ·ñ¶Ô³Æ
-int isAntiSymmetric(int** R, int Row); //ÊÇ·ñ·´¶Ô³Æ
-int isTransitive(int** R, int Row); //ÊÇ·ñ´«µİ
-int** TransitiveClosures(int** R, int Row); //´«µİ±Õ°ü
-void Quotientset(int** R, int Row); //ÉÌ¼¯
-void PrintMatrix(int** R, char** A, char** B, int Row, int Column); //´òÓ¡¹ØÏµ¾ØÕó
-void FreeSet(char** Set, int Row); //ÊÍ·Å¼¯ºÏ
-void FreeMatrix(int **R, int Row); //ÊÍ·Å¹ØÏµ¾ØÕó
+char** CreateSet(int Row); //åˆå§‹åŒ–å¹¶è¯»å…¥é›†åˆ
+int** InitMatrix(int Row, int Column); //åˆå§‹åŒ–å…³ç³»çŸ©é˜µ
+void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int Column); //æŠŠä¸€ä¸ªå…³ç³»å¯¹åº”åˆ°å…³ç³»çŸ©é˜µ
+int** Composite(int** R, int** G, int a, int b, int c); //å…³ç³»çš„å¤åˆè¿ç®—(çŸ©é˜µç›¸ä¹˜,æœ‰æ”¹åŠ¨)
+int isReflexive(int** R, int Row); //æ˜¯å¦è‡ªå
+int isAntiReflexive(int** R, int Row); //æ˜¯å¦åè‡ªå
+int isSymmetric(int** R, int Row); //æ˜¯å¦å¯¹ç§°
+int isAntiSymmetric(int** R, int Row); //æ˜¯å¦åå¯¹ç§°
+int isTransitive(int** R, int Row); //æ˜¯å¦ä¼ é€’
+int** TransitiveClosures(int** R, int Row); //ä¼ é€’é—­åŒ…
+void Quotientset(int** R, char** A, int Row); //æ‰“å°å•†é›†
+void PrintMatrix(int** R, char** A, char** B, int Row, int Column); //æ‰“å°å…³ç³»çŸ©é˜µ
+void FreeSet(char** Set, int Row); //é‡Šæ”¾é›†åˆ
+void FreeMatrix(int **R, int Row); //é‡Šæ”¾å…³ç³»çŸ©é˜µ
 
 int main(int argc, char** argv) {
 	char operation;
@@ -124,33 +124,6 @@ int main(int argc, char** argv) {
 
 				printf("\n");
 
-				int flag_Reflexive = isReflexive(R, a);
-				int flag_AntiReflexive = isAntiReflexive(R, a);
-				int flag_Symmetric = isSymmetric(R, a);
-				int flag_AntiSymmetric = isAntiSymmetric(R, a);
-				int flag_Transitive = isTransitive(R, a);
-
-				if (operation == '3') {
-					if (flag_Reflexive) {
-						printf("The relation R on the set A is reflexive.\n");
-					}
-					if (flag_AntiReflexive) {
-						printf("The relation R on the set A is antireflexive.\n");
-					}
-					if (flag_Symmetric) {
-						printf("The relation R on the set A is symmetric.\n");
-					}
-					if (flag_AntiSymmetric) {
-						printf("The relation R on the set A is antiSymmetric.\n");
-					}
-					if (flag_Transitive) {
-						printf("The relation R on the set A is transitive.\n");
-					}
-
-					printf("\n");
-
-				}
-
 				if (operation == '4') {
 					printf("The transitive closure of relation R:\n");
 					clock_t start, stop;
@@ -163,9 +136,44 @@ int main(int argc, char** argv) {
 					printf("\n");
 				}
 
-				if (operation == '5') {
-					if (flag_Reflexive && flag_Symmetric && flag_Transitive) {
-						printf("R is an equivalence relation.\n");
+				if (operation == '3' || operation == '5') {
+					int flag_Reflexive = isReflexive(R, a);
+					int flag_Symmetric = isSymmetric(R, a);
+					int flag_Transitive = isTransitive(R, a);
+
+					if (operation == '3') {
+						int flag_AntiReflexive = isAntiReflexive(R, a);
+						int flag_AntiSymmetric = isAntiSymmetric(R, a);
+
+						if (flag_Reflexive) {
+							printf("The relation R on the set A is reflexive.\n");
+						}
+						if (flag_AntiReflexive) {
+							printf("The relation R on the set A is antireflexive.\n");
+						}
+						if (flag_Symmetric) {
+							printf("The relation R on the set A is symmetric.\n");
+						}
+						if (flag_AntiSymmetric) {
+							printf("The relation R on the set A is antiSymmetric.\n");
+						}
+						if (flag_Transitive) {
+							printf("The relation R on the set A is transitive.\n");
+						}
+						printf("\n");
+					}
+
+					if (operation == '5') {
+						if (flag_Reflexive && flag_Symmetric && flag_Transitive) {
+							printf("R is an equivalence relation.\n");
+							printf("The Quotientset of R is:");
+							Quotientset(R, A, a);
+
+							printf("\n");
+						}
+						else {
+							printf("R is not an equivalence relation.\n");
+						}
 					}
 				}
 				FreeMatrix(R, a);
@@ -184,7 +192,7 @@ int main(int argc, char** argv) {
 		printf("4.Computing the transitive closure of a relation\n");
 		printf("5.Judge the relation of equivalence relation\n");
 		printf("Please choose the function what you want(press 0 to exit):");
-		getchar();//°Ñ»º³åÇøµÄ»Ø³µ¶Á×ß
+		getchar();//æŠŠç¼“å†²åŒºçš„å›è½¦è¯»èµ°
 		scanf("%c", &operation);
 	}
 	return 0;
@@ -285,7 +293,17 @@ int isAntiSymmetric(int** R, int Row) {
 
 int isTransitive(int** R, int Row) {
 	int flag = 1;
-
+	int** M = Composite(R, R, Row, Row, Row);
+	for (int i = 0; i < Row; i++) {
+		for (int j = 0; j < Row; j++) {
+			if (R[i][j] == 0 && M[i][j] == 1) {
+				flag = 0;
+				FreeMatrix(M, Row);
+				return flag;
+			}
+		}
+	}
+	FreeMatrix(M, Row);
 	return flag;
 }
 
@@ -304,6 +322,34 @@ int** TransitiveClosures(int** R, int Row) {
 		}
 	}
 	return R;
+}
+
+void Quotientset(int** R, char** A, int Row) {
+	printf("{ ");
+	for (int i = 0; i < Row; i++) {
+		if (R[i][i] == 1) {
+			printf("{ ");
+		}
+		for (int j = i; j < Row; j++) {
+			if (R[i][j] == 1) {
+				if (i == j) {
+					printf("%s ", A[j]);
+				}
+				else {
+					printf("%s ", A[j]);
+					for (int k = j; k < Row; k++) {
+						if (R[j][k] == 1) {
+							R[j][k] = 0;
+						}
+					}
+				}
+			}
+		}
+		if (R[i][i] == 1) {
+			printf("} ");
+		}
+	}
+	printf("}\n");
 }
 
 void PrintMatrix(int** R, char** A, char** B, int Row, int Column) {

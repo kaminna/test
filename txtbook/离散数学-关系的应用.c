@@ -12,7 +12,7 @@ int isAntiReflexive(int** R, int Row); //是否反自反
 int isSymmetric(int** R, int Row); //是否对称
 int isAntiSymmetric(int** R, int Row); //是否反对称
 int isTransitive(int** R, int Row); //是否传递
-int** TransitiveClosures(int** R, int Row); //传递闭包
+int** TransitiveClosures(int** R, int Row); //传递闭包(WarShall算法)
 void Quotientset(int** R, char** A, int Row); //打印商集
 void PrintMatrix(int** R, char** A, char** B, int Row, int Column); //打印关系矩阵
 void FreeSet(char** Set, int Row); //释放集合
@@ -228,7 +228,7 @@ void AssiganMatrix(int** R, char** A, char** B, char* x, char* y, int Row, int C
 	}
 
 	printf("Error!\n");
-	printf("Please input a relation again:\n");
+	printf("Please input a relation again(such as:%s %s):\n", A[0], B[0]);
 	scanf("%s%s", x, y);
 	AssiganMatrix(R, A, B, x, y, Row, Column);
 }

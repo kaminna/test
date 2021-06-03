@@ -185,7 +185,7 @@ int main(int argc, char** argv) {
 			printf("Error!\n");
 			printf("\n");
 		}
-		printf("The menu of function:\n");
+
 		printf("1.Save and print a binary relationships\n");
 		printf("2.The composite of two relations\n");
 		printf("3.Judge the properties of relation\n");

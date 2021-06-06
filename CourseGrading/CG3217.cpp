@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <iostream>
 #include <algorithm>
 #include <math.h>
@@ -15,16 +15,16 @@ int main(int argc, char** argv) {
 		double sum = 0, t;
 		for (int i = 0; i < n; i++) {
 			scanf("%lld%lld", &a, &b);
-			t = ceil(1.0 * a/(D - b));//ÏòÉÏÈ¡Õû
-			ans[i] = (int)t;//´æÆðÀ´
-			sum += t;//Çó×ÜºÍ
+			t = ceil(1.0 * a/(D - b));//å‘ä¸Šå–æ•´
+			ans[i] = (int)t;//å­˜èµ·æ¥
+			sum += t;//æ±‚æ€»å’Œ
 		}
-		sort(ans, ans + n);//ÅÅÐò
+		sort(ans, ans + n);//æŽ’åº
 		int c = 0;
 		for (int i = k; i < n; i++) {
-			c += ans[i];//ºón-k¸öÊý¾ÝÖ®ºÍ
+			c += ans[i];//åŽn-kä¸ªæ•°æ®ä¹‹å’Œ
 		}
-		printf("%d\n", (int)(sum - c));//×ÜºÍ¼õÈ¥ºóÃæn-k¸öÊý¾Ý
+		printf("%d\n", (int)(sum - c));//æ€»å’Œå‡åŽ»åŽé¢n-kä¸ªæ•°æ®
 		free(ans);
 		T--;
 	}

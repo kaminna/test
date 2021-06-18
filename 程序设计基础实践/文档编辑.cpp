@@ -1,9 +1,6 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-#include <iostream>
-#include <string>
-using namespace std;
 int main() {
 	int n;
 	scanf("%d", &n);

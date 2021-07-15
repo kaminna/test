@@ -1,13 +1,13 @@
 #include <cstdio>
-
-bool isPrime(int x) {
+#include <cmath>
+bool isPrime(long long x) {
 	if (x <= 0) {
 		return false;
 	}
 	if (x == 1) {
 		return false;
 	}
-	for (int i = 2; i < x; i++) {
+	for (long long i = 2; i < sqrt(x); i++) {
 		if (x % i == 0) {
 			return false;
 		}
@@ -16,11 +16,11 @@ bool isPrime(int x) {
 }
 
 int main() {
-	int n;
-	scanf("%d", &n);
-	for (int i = 2; i <= n; i++) {
+	long long n;
+	scanf("%lld", &n);
+	for (long long i = 2; i <= n; i++) {
 		if (isPrime(i)) {
-			printf("%d ", i);
+			printf("%lld ", i);
 		}
 	}
 	return 0;

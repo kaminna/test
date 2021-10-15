@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>映象東京</title>
+<style type="text/css">
+#div_map {
+	position:relative;
+	width:580px;
+	height:566px;
+	z-index:1;
+	margin-right: auto;
+	margin-left: auto;
+}
+#div_img {
+	position:absolute;
+	left:50px;
+	top:340px;
+	width:250px;
+	height:167px;
+	z-index:2;
+	visibility: hidden;
+}
+#div_txt {
+	position:absolute;
+	left:325px;
+	top:340px;
+	width:200px;
+	height:120px;
+	z-index:3;
+}
+#div_time {
+	position:absolute;
+	left:297px;
+	top:32px;
+	width:259px;
+	height:38px;
+	z-index:2;
+}
+</style>
+<script type="text/javascript">
+	function MM_showHideLayers() { //v9.0
+	  var i,p,v,obj,args=MM_showHideLayers.arguments;
+	  for (i=0; i<(args.length-2); i+=3) 
+	  with (document) if (getElementById && ((obj=getElementById(args[i]))!=null)) { v=args[i+2];
+		if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+		obj.visibility=v; }
+	}
+	function MM_preloadImages() { //v3.0
+	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+		var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+		if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+	}
+	
+	function MM_swapImgRestore() { //v3.0
+	  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+	
+	function MM_swapImage() { //v3.0
+	  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+	   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+	}
+	function MM_setTextOfLayer(objId,x,newText) { //v9.0
+	  with (document) if (getElementById && ((obj=getElementById(objId))!=null))
+		with (obj) innerHTML = unescape(newText);
+	}
+	window.onload=function()
+	{
+		window.requestAnimationFrame(getDate)
+	}		
+	function getDate() {
+		window.setTimeout(function(){
+			window.requestAnimationFrame(getDate)
+		},1000/2)
+		var d=new Date();   
+		var year=d.getFullYear()
+		var month=d.getMonth()+1;
+		var day=d.getDay()
+		var days=d.getDate()
+		var hour=d.getHours()
+		var minute=d.getMinutes()
+		var second=d.getSeconds()
+		if(month<10) month="0"+month
+		if(days<10) days="0"+days
+		if(hour<10) hour="0"+hour
+		if(minute<10) minute="0"+minute
+		if(second<10) second="0"+second
+		var Tools=document.getElementById("div_time")
+		var da="<font color='red' >Good morning<br />现在时间是:"+year+"-"+month+"-"+days+" "+hour+":"+minute+":"+second+"</font>"
+		Tools.innerHTML=da
+	}
+</script>
+</head>
+
+<body onload="getDate()", "MM_preloadImages('images/map/scenic01.JPG','images/map/scenic02.JPG','images/map/scenic03.jpg','images/map/scenic04.jpg','images/map/scenic06.JPG','images/map/scenic07.JPG','images/map/scenic08.JPG','images/map/scenic09.JPG','images/map/scenic10.JPG','images/map/scenic11.JPG','images/map/scenic12.JPG','images/map/scenic05.JPG')">
+<div id="div_map">
+	<img src="images/tokyomap.jpg" name="map" width="580" height="566" id="map" border="0" usemap="#Map" />
+	<map name="Map" id="Map">
+		<area shape="circle" coords="76,184,8" href="scenicspots.htm#s3_1" alt="吉卜力美術館 (GHIBLI Museum)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic05.JPG',1);MM_setTextOfLayer('div_txt','','吉卜力美術館 (GHIBLI Museum)<br />由世界著名的動畫大師宮崎駿擔任館主的動畫美術館，真切感受宮崎電影世界的一個難得的好地方。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="532,259,8" href="scenicspots.htm#s1_1" alt="東京迪士尼樂園 (Tokyo Disney)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic01.JPG',1);MM_setTextOfLayer('div_txt','','東京迪士尼樂園 (Tokyo Disney)<br />東京迪士尼樂園位於東京近郊千葉縣浦安市舞濱，從東京市區前往十分方便。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="49,275,7" href="scenicspots.htm#s1_2" alt="三麗鷗彩虹樂園 (Sanrio Puroland)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic02.JPG',1);MM_setTextOfLayer('div_txt','','三麗鷗彩虹樂園 (Sanrio Puroland)<br />三麗鷗彩虹樂園位於東京都多摩市，可看見以 Hello Kitty 為首等彩虹樂園的卡通明星。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="400,129,8" href="scenicspots.htm#s2_1" alt="上野公園 (Ueno)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic03.jpg',1);MM_setTextOfLayer('div_txt','','上野公園 (Ueno)<br />上野公園，全名為上野恩賜公園，公園內有1200棵櫻樹，園中大道兩側的櫻花街道樹尤其美麗。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="303,281,7" href="scenicspots.htm#s3_2" alt="六本木森美術館 (Mori Art Museum)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic06.JPG',1);MM_setTextOfLayer('div_txt','','六本木森美術館 (Mori Art Museum)<br />森美術館在六本木森大廈的最高層樓，館內以現代藝術為展覽主題。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="268,277,8" href="scenicspots.htm#s4_1" alt="表參道 (Omotesando)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic07.JPG',1);MM_setTextOfLayer('div_txt','','表參道 (Omotesando)<br />以日本的巴黎而著稱，沿街的林蔭道，開放式的時髦咖啡店和餐廳，高檔時裝店，優雅而富有風情。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="294,295,7" href="scenicspots.htm#s4_2" alt="六本木 (Roppongi)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic08.JPG',1);MM_setTextOfLayer('div_txt','','六本木 (Roppongi)<br />異國情調的商店把六本木的夜晚裝扮得五光十色，是東京都內有名的夜晚遊樂場所。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="250,150,10" href="scenicspots.htm#s4_3" alt="池袋 (Ikebukuro)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic09.JPG',1);MM_setTextOfLayer('div_txt','','池袋 (Ikebukuro)<br />池袋是繼新宿、澀谷之後山手線沿線的具有代表性的東京又一著名商業區和交通樞紐站。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="450,295,8" href="scenicspots.htm#s4_4" alt="築地 (Tsukiji)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic10.JPG',1);MM_setTextOfLayer('div_txt','','築地 (Tsukiji)<br />築地市場是東京最大的魚市和蔬菜批發和零售市場，築地市場外圍的市場，是面向一般市民的零售市場。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="348,137,8" href="scenicspots.htm#s5_1" alt="東京大學 (The University of Tokyo)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic11.JPG',1);MM_setTextOfLayer('div_txt','','東京大學 (The University of Tokyo)<br />日本東京大學成立於1877年，是日本創辦的第一所國立大學。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="266,167,8" href="scenicspots.htm#s5_2" alt="早稻田大學 (Waseda University)" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic12.JPG',1);MM_setTextOfLayer('div_txt','','早稻田大學 (Waseda University)<br />1902年在建校20週年之際正式改名為早稻田大學。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+		<area shape="circle" coords="95,183,7" href="scenicspots.htm#s2_2" alt="井之頭恩賜公園" onmouseover="MM_showHideLayers('div_img','','show');MM_swapImage('scenicspot','','images/map/scenic04.jpg',1);MM_setTextOfLayer('div_txt','','井之頭恩賜公園<br />井之頭恩賜公園是德川家康要求臣民開闢江戶城水源時發開的地點。')" onmouseout="MM_showHideLayers('div_img','','hide');MM_setTextOfLayer('div_txt','','操作方式說明文字：將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />若按一下紅色圈圈標示即可進入相關說明頁面。')" />
+	  </map>
+	<div id="div_img">
+		<img src="images/map/scenic01.JPG" name="scenicspot" width="250" height="167" border="1" id="scenicspot" />
+	</div>
+	<div id="div_txt">
+		操作方式說明文字：<br />
+		將滑鼠指標移至代表該景點的紅色圈圈標示上方，會顯示相關圖片與文字。<br />
+		若按一下紅色圈圈標示即可進入相關說明頁面。
+	</div>
+	<div id="div_time">
+	</div>
+</div>
+</body>
+</html>

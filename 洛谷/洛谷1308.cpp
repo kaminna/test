@@ -1,7 +1,5 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring> 
-#include <cctype>
+#include <bits/stdc++.h>
+using namespace std;
 void strlower(char *a) {
 	for (int i = 0; a[i]; i++) {
 		if (isupper(a[i])) a[i] = tolower(a[i]);
@@ -9,9 +7,9 @@ void strlower(char *a) {
 }
 int main() {
 	char w[100], art[2000000];
-	scanf("%s", &w);
+	scanf("%s", w);
 	getchar();
-	gets(art);
+	cin.getline(art, 2000000);
 	int len1 = strlen(w), len2 = strlen(art);
 	int cnt = 0, pos = 2000000;
 	strlower(w);

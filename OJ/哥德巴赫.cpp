@@ -12,7 +12,7 @@ ll pri[maxn];
 void sieve(long long n){
     for (int i = 2;i <= maxn; i++) {
         if (!vis[i]) {
-            prime[++prime[0]] = i;      
+            prime[++prime[0]] = i;
         }
         for (int j = 1; j <=prime[0] && i*prime[j] <= maxn; j++) {
             vis[i*prime[j]] = 1;

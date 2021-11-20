@@ -5,12 +5,6 @@ void Hanoi(char c, int n, char target) {
 		printf("%c->%c\n", c, target);
 		return ;
 	}
-	if (n == 2) {
-		printf("%c->%c\n", c, tmp);
-		Hanoi(c, n-1, target);
-		Hanoi(tmp, n-1, target);
-		return ;
-	}
 	Hanoi(c, n-1, tmp);
 	Hanoi(c, 1, target);
 	Hanoi(tmp, n-1, target);

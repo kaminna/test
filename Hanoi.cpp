@@ -8,6 +8,7 @@ void Hanoi(char c, int n, char target) {
 	Hanoi(c, n-1, tmp);
 	Hanoi(c, 1, target);
 	Hanoi(tmp, n-1, target);
+	return ;
 }
 int main(int argc, char** argv) {
 	int n;

@@ -317,21 +317,26 @@ status merglist(linklist la,linklist lb,linklist &lc) {
     }
     return ok;
 }
-
+status linklist_deletemax(linklist &L) {
+    if (!L || !L->next) return error;
+    linklist max_pre = L, max_cur = L->next, p = L;
+    while (p->next) {
+        if (p->next->data > max_cur->data) {
+            max_pre = p;
+            max_cur = p->next;
+        }
+        p = p->next;
+    }
+    max_pre->next = max_cur->next;
+    free(max_cur);
+    return ok;
+}
 int main(int argc, char** argv) {
   linklist l;
-
   initlist(l);
-
   inputlist(l);
-
-  elemtype max,min;
-
-  listmax(l,max);listmin(l,min);
-
-  printf("%d\n%d",max,min);
-
+  linklist_deletemax(l);
+  listtraverse(l);  
   destroylist(l);
-
   return 0;
 }

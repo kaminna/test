@@ -207,12 +207,12 @@ status intersect_set(sqlist la, sqlist lb, sqlist &lc) {
             }
         }
         if (pos) {
-                elemtype* q = &(lc.elem[lc.length]);
-                for (elemtype* p = &(lc.elem[lc.length-1]); p >= q; --p) *(p+1) = *p;
-                *q = la.elem[i];
-                ++lc.length;
-            }
+            elemtype* q = &(lc.elem[lc.length]);
+            for (elemtype* p = &(lc.elem[lc.length-1]); p >= q; --p) *(p+1) = *p;
+            *q = la.elem[i];
+            ++lc.length;
         }
+    }
     return ok;
 }
 
